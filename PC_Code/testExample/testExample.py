@@ -1,4 +1,4 @@
-# JVasquez
+# Joshua Vasquez
 # December 23, 2012
 # Python Teensyduino HID test
 

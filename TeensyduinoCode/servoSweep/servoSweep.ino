@@ -1,4 +1,7 @@
  /* 
+   Joshua Vasquez
+   December 29, 2012
+
    Teensyduino USB servo controller Example2
    One servo connected to Digital Pin 5
    

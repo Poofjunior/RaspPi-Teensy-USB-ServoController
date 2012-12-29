@@ -1,5 +1,5 @@
-# JVasquez
-# December 23, 2012
+# Joshua Vasquez
+# December 29, 2012
 # Python Teensyduino HID test
 
 # This code simply sweeps a servo back and forth 180 degrees via a usb 

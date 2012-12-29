@@ -13,7 +13,8 @@ being able to run these examples:
 
 ### Hardware:
 - A Teensy 2.0  
-   Source: http://www.pjrc.com/store/teensy.html
+   Source: http://www.pjrc.com/store/teensy.html  
+
 ### Software:
 - PyUSB  
    Source: http://sourceforge.net/apps/trac/pyusb/  
