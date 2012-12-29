@@ -5,19 +5,19 @@ Python Programming language.  In this case, the hardware interface is a
 Teensy 2.0 Development board.  Theoretically, you can control up to 12 
 servos at once from a Python program.
 
-The end goal is to provide high-level access (via Python) to low-level motor 
-control via a hardware interface.
+The end goal is to provide the Raspberry Pi with high-level access (via Python)
+ to low-level motor control via a hardware interface.
 
 To get started, you'll need a combination of hardware and software before 
 being able to run these examples:
 
 ### Hardware:
--- A Teensy 2.0  
+- A Teensy 2.0  
    Source: http://www.pjrc.com/store/teensy.html
 ### Software:
--- PyUSB  
-   Source: http://sourceforge.net/apps/trac/pyusb/
--- Arduino 1.0.1 Teensyduino installation  
+- PyUSB  
+   Source: http://sourceforge.net/apps/trac/pyusb/  
+- Arduino 1.0.1 Teensyduino installation  
    Source: http://www.pjrc.com/teensy/teensyduino.html
 
 ### Getting Started:
@@ -25,7 +25,10 @@ being able to run these examples:
 below quite handy to overcoming many typical problems:
 http://rcarduino.blogspot.com/2012/04/servo-problems-with-arduino-part-1.html
 Note, however, that this code snippet MUST be used with a Teensy, not an 
-Arduino Uno.
+Arduino Uno.  
+  To run the examples, simply install the necessary hardware and software, 
+upload the Teensy sketch, and run the corresponding Python example.
+
 
 ### Citations:
   Riding on the shoulders of giants, this project would be impossible without
