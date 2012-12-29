@@ -19,44 +19,39 @@
 #   the OUT address.
 #
 
-
 import usb.core
 import usb.util
 import time
-
-# find the Teensy.  (idVendor and idProduct are set in the Teensy Code.)
-
-interface = 0
 
 DATA_SIZE = 64
 VENDOR_ID = 0x16C0
 PRODUCT_ID = 0x0486	# Arduino Version
 
-Teensy = usb.core.find(idVendor = VENDOR_ID, idProduct = PRODUCT_ID)
+class TeensyInterface:
+	def __init__(self, dataSize, vendorId, productId):
+		self.dataSize = dataSize
+		# find the Teensy.  (idVendor and idProduct are set in the Teensy Code.)
+		self.Teensy = usb.core.find(idVendor = vendorId, idProduct = productid)
+    if Teensy is None:
+	    raise ValueError( 'Teensy not found')
+		if Teensy.is_kernel_driver_active(interface) is True:
+      print "but we need to detach kernel driver"
+      Teensy.detach_kernel_driver(interface)
+      print "claiming device"
+      usb.util.claim_interface(Teensy, interface)
+      
+  def run(self):
+		# 0x81 is the type of endpoint (interrupt-based, in our case)
+		# 64 is the number of bytes we want back from the Teensy
+		# Make some dummy buffer of zeros.
+		outBuffer = [0]*self.dataSize
+		while True:
+			time.sleep(1)
+			# send over the dummy buffer and print the Teensy's reply:
+			Teensy.write(0x04,outBuffer)
+			reply = Teensy.read(0x83, self.dataSize)
+			print reply
 
-
-if Teensy is None:
-	raise ValueError( 'Teensy not found')
-
-
-
-if Teensy.is_kernel_driver_active(interface) is True:
-        print "but we need to detach kernel driver"
-        Teensy.detach_kernel_driver(interface)
-        print "claiming device"
-        usb.util.claim_interface(Teensy, interface)
-
-
-# 0x81 is the type of endpoint (interrupt-based, in our case)
-# 64 is the number of bytes we want back from the Teensy
-
-# Make some dummy buffer of zeros.
-outBuffer = [0]*64
-
-while True:
-	time.sleep(1)
-# send over the dummy buffer and print the Teensy's reply:
-	Teensy.write(0x04,outBuffer)
-	reply = Teensy.read(0x83, 64)
-	print reply
-
+if __name__ == "__main__":
+	teensy = TeensyInterface(DATA_SIZE,VENDOR_ID,PRODUCT_ID)
+	teensy.run()
