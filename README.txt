@@ -1,7 +1,12 @@
 Welcome to the USB-to-Sero-Controller Interface Project!
 
 This program allows you to control servos from a custom USB device using the 
-Python Programming language.  
+Python Programming language.  In this case, the hardware interface is a 
+Teensy 2.0 Development board.  Theoretically, you can control up to 12 
+servos at once from a Python program.
+
+The end goal is to provide high-level access (via Python) to low-level motor 
+control via a hardware interface.
 
 To get started, you'll need a combination of hardware and software before 
 being able to run these examples:
