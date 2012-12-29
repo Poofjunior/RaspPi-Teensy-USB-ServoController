@@ -21,14 +21,14 @@ being able to run these examples:
    Source: http://www.pjrc.com/teensy/teensyduino.html
 
 ### Getting Started:
-    If you're completely new to servos with Arduino, you might find the link 
+  If you're completely new to servos with Arduino, you might find the link 
 below quite handy to overcoming many typical problems:
 http://rcarduino.blogspot.com/2012/04/servo-problems-with-arduino-part-1.html
 Note, however, that this code snippet MUST be used with a Teensy, not an 
 Arduino Uno.
 
 ### Citations:
-    Riding on the shoulders of giants, this project would be impossible without
+  Riding on the shoulders of giants, this project would be impossible without
  the incredible starter code provided by Paul Stoffregen found in the examples 
 tab under: `File-->Examples-->Teensy-->USB_RawHID-->Basic`.
 
