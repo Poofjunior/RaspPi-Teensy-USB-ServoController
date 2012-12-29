@@ -1,6 +1,6 @@
 # JVasquez
 # December 23, 2012
-# Python Teensyduin HID test
+# Python Teensyduino HID test
 
 # A couple of notes: 
 #   To find the 1st argument of Teensy.read( arg, arg), I used 
@@ -29,18 +29,19 @@ PRODUCT_ID = 0x0486	# Arduino Version
 
 class TeensyInterface:
 	def __init__(self, dataSize, vendorId, productId):
+		self.interface = 0
 		self.dataSize = dataSize
 		# find the Teensy.  (idVendor and idProduct are set in the Teensy Code.)
-		self.Teensy = usb.core.find(idVendor = vendorId, idProduct = productid)
-    if Teensy is None:
-	    raise ValueError( 'Teensy not found')
-		if Teensy.is_kernel_driver_active(interface) is True:
-      print "but we need to detach kernel driver"
-      Teensy.detach_kernel_driver(interface)
-      print "claiming device"
-      usb.util.claim_interface(Teensy, interface)
+		self.Teensy = usb.core.find(idVendor = vendorId, idProduct = productId)
+		if self.Teensy is None:
+			raise ValueError( 'Teensy not found')
+		if self.Teensy.is_kernel_driver_active(self.interface) is True:
+      			print "but we need to detach kernel driver"
+      			self.Teensy.detach_kernel_driver(self.interface)
+      			print "claiming device"
+     			usb.util.claim_interface(self.Teensy, self.interface)
       
-  def run(self):
+	def run(self):
 		# 0x81 is the type of endpoint (interrupt-based, in our case)
 		# 64 is the number of bytes we want back from the Teensy
 		# Make some dummy buffer of zeros.
@@ -48,8 +49,8 @@ class TeensyInterface:
 		while True:
 			time.sleep(1)
 			# send over the dummy buffer and print the Teensy's reply:
-			Teensy.write(0x04,outBuffer)
-			reply = Teensy.read(0x83, self.dataSize)
+			self.Teensy.write(0x04,outBuffer)
+			reply = self.Teensy.read(0x83, self.dataSize)
 			print reply
 
 if __name__ == "__main__":
