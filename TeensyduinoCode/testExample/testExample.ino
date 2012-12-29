@@ -1,13 +1,5 @@
- /* Basic Raw HID Example
-   Teensy can send/receive 64 byte packets with a
-   dedicated program running on a PC or Mac.
-
-   You must select Raw HID from the "Tools > USB Type" menu
-
-   Optional: LEDs should be connected to pins 0-7,
-   and analog signals to the analog inputs.-
-
-   This example code is in the public domain.
+ /* 
+   Teensyduino USB servo controller Example
 */
 #include <Servo.h>
 
@@ -16,15 +8,25 @@
 // RawHID packets are always 64 bytes
 byte buffer[64];
 
-Servo servo;
+Servo* servos[12];
+
+// Stuff servo default positions here:
+uint8_t defaultPos[12] = {0,0,0,0,0,90,0,0,0,0,0,0};  
+uint8_t servoPin[12] = {0,1,2,3,4,5,6,7,8,9,10,12}; // skip pin 11;
 
 
 void setup() {
   DDRD |= (1 << 6);  // make PD6 (the LED) an output.
   
-  servo.attach(0);  
-  servo.write(0);  
+  // attach 12 servos and set them to the default position:
 
+  for (uint8_t i=0;i<12;i++)
+  {
+    servos[i] = new Servo;
+    servos[i]->attach(servoPin[i]);  
+    servos[i]->write(defaultPos[i]);  
+  }
+  delay(1500);
 }
 
 
@@ -36,13 +38,13 @@ void loop() {
     
     switch ( (PIND >> 6) & 0x01 ){
       case 0:
-        servo.write(0);
+        servos[5]->write(0);
         break;
       case 1:
-        servo.write(30);
+        servos[5]->write(30);
         break;
       default:
-        servo.write(30);
+        servos[5]->write(30);
   }
   }
     
