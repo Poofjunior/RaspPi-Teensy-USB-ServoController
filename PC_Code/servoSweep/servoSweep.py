@@ -50,18 +50,15 @@ class TeensyInterface:
 		# 0x81 is the type of endpoint (interrupt-based, in our case)
 		# 64 is the number of bytes we want back from the Teensy
 		# Make some dummy buffer of zeros.
+		sweepStart = 0
+		sweepEnd = 180
 		outBuffer = [0]*self.dataSize
 		while True:
-			for angle in range(0,180):
+			for angle in range(sweepStart,sweepEnd) + range(sweepEnd,sweepStart-1,-1):
 				time.sleep(.005)
-			# digital pin 5 data goes in the 5th index of the array
+				# digital pin 5 data goes in the 5th index of the array
 				outBuffer[5] = angle #bytes(angle)
 				self.Teensy.write(0x04,outBuffer)
-			for angleBack in range(180,0,-1):
-				time.sleep(.005)
-				outBuffer[5] = angleBack #bytes(angleBack)
-				self.Teensy.write(0x04,outBuffer)
-				
 
 if __name__ == "__main__":
 	teensy = TeensyInterface(DATA_SIZE,VENDOR_ID,PRODUCT_ID)
