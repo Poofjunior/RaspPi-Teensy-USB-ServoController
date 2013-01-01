@@ -40,7 +40,10 @@ void loop() {
   if ( RawHID.recv(buffer, 0) > 0) // 0 timeout = do not wait
   {
     PORTD ^= (1 << 6);  // Toggle the pin 
-    servos[5]->write(buffer[5]);
+    for (uint8_t i=0;i<12;i++)
+    {
+      servos[i]->write(buffer[i]);
+    }
   }
   }
 

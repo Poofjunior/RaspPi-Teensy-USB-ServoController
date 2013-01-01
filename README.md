@@ -13,7 +13,9 @@ being able to run these examples:
 
 ### Hardware:
 - A Teensy 2.0  
-   Source: http://www.pjrc.com/store/teensy.html  
+   Source: http://www.pjrc.com/store/teensy.html    
+- up to 12 servos connected to digital pins 0 through 13 (but NOT pin 11, the 
+LED pin.
 
 ### Software:
 - PyUSB  
@@ -37,4 +39,6 @@ upload the Teensy sketch, and run the corresponding Python example.
 tab under: `File-->Examples-->Teensy-->USB_RawHID-->Basic`.  
 
 Other sources can be found here:  
-  http://stackoverflow.com/questions/8218683/pyusb-cannot-set-configuration
+ - http://stackoverflow.com/questions/8218683/pyusb-cannot-set-configuration  
+ - http://www.servocity.com/html/how_do_servos_work_.html  
+
